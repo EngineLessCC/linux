@@ -67,7 +67,7 @@ define posix_host
   $(call set_autoconf_var,VIRTIO_NET,y)
   $(call set_autoconf_var,VIRTIO_NET_FD,y)
   $(if $(strip $(call find_include,linux/vfio.h)),$(call set_autoconf_var,VFIO_PCI,y))
-  LDFLAGS += -pie
+  LDFLAGS += -pie -z noexecstack
   CFLAGS += -fPIC -pthread
   SOSUF := .so
   $(if $(call is_defined,__ANDROID__),$(call android_host),LDLIBS += -lrt -lpthread)

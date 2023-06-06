@@ -6,6 +6,7 @@ exec_format = $(firstword $(subst -, ,$(CONFIG_OUTPUT_FORMAT)))
 
 ifneq (,$(filter elf64 elf32,$(exec_format)))
 KBUILD_CFLAGS += -fPIC
+LDFLAGS_vmlinux += -z noexecstack
 else ifneq (,$(filter pe,$(exec_format)))
 ifneq ($(CONFIG_OUTPUT_FORMAT),pe-x86-64)
 prefix=_
